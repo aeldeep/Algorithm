@@ -18,17 +18,21 @@ public class Java2DArray {
                 arr[i][j] = arrItem;
             }
         }
-        int sum =0;
-        int result=0;
+        int sum=0 ;
+        int result=-1000;
         for (int i=0; i<4;i++)
         {
             for (int k =0;k<4;k++)
             {
-                sum = arr[i][k]+arr[i][k+1]+arr[i][k+2]+arr[i+1][k+1]+arr[i+2][k]+arr[i+2][k+1]+arr[i+2][k+2];
-                if (sum>result)
-                {
-                result=sum;
+                if (arr[i][k]>-10&& arr[i][k]<10&&arr[i][k+1]>-10&& arr[i][k+1]<10&&arr[i][k+2]>-10&& arr[i][k+2]<10&&arr[i+1][k+1]>-10&& arr[i+1][k+1]<10&&arr[i+2][k]>-10&& arr[i+2][k]<10&&arr[i+2][k+1]>-10&& arr[i+2][k+1]<10&&arr[i+2][k+2]>-10&& arr[i+2][k+2]<10){
+                    sum = arr[i][k]+arr[i][k+1]+arr[i][k+2]+arr[i+1][k+1]+arr[i+2][k]+arr[i+2][k+1]+arr[i+2][k+2];
+                }else{}
 
+                //System.out.println("Sum --> "+sum);
+            //     System.out.println(" i ==> "+i);
+                if (sum>=result)
+                {
+                	result=sum;
                 }
             }
 
