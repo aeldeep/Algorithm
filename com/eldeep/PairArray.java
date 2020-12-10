@@ -56,6 +56,7 @@ public class PairArray {
                 count++;
             }
         }
+        System.out.println(count);
         return count;
 
     }
@@ -79,6 +80,7 @@ public class PairArray {
                 count++;
             }
         }
+        System.out.println(count);
         return count;
         }
 
