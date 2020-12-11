@@ -13,13 +13,13 @@ public class HelloWorld {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[]  n= {1,2,3,6,8,6} ;
+	//	int[]  n= {1,2,3,6,8,6} ;
 	//	solution(n);
 		
 		int [] juice 	= {2, 2, 1, 1,2,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2};
 		int [] capacity = {40, 40, 40, 40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40,40};
-		int [] j = {4, 7, 2};
-		int [] c = {7, 8, 4};
+	//	int [] j = {4, 7, 2};
+	//	int [] c = {7, 8, 4};
 		
 		solution2(juice,capacity);
 		//solution3(j,c);
