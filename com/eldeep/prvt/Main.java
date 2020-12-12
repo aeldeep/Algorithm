@@ -80,11 +80,12 @@ public static void main(String[] args) {
 		{
 			System.out.println("Black List "+ d1.get(i).getName());
 			b.add(d1.get(i).getName());
-		}else if (d1.get(i).getCurrentState().equals("OUT_OF_USE")&&d1.get(i).getCurrentState()!="OUT_OF_USE")
+		}else if (d1.get(i).getCurrentState().equals("OUT_OF_USE")&&d1.get(i).getNewState()!="OUT_OF_USE")
 		{
 			System.out.println("White List "+ d1.get(i).getName());
 			w.add(d1.get(i).getName());
 		}
+		//System.out.println(d1.get(i));
 	}
 	
 // Creating Output File and Insert Data formated as requested
