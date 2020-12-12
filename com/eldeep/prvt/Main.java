@@ -22,7 +22,8 @@ public static void main(String[] args) {
 	List<String> w=new ArrayList<String>();
 	List<String> b=new ArrayList<String>();
 	String name;
-	LocalDateTime date;
+	LocalDateTime oldDate;
+	LocalDateTime newDate;
 	String currentState;
 	String newState;
 	//Date Formatter
@@ -42,7 +43,9 @@ public static void main(String[] args) {
 				line = reader.readLine();
 			}else {
 				String[] data = line.split(" ");
-				date=LocalDateTime.parse(data[0],formatter);
+				data[0]=data[0].replace(",", ".");
+				oldDate=LocalDateTime.parse(data[0],formatter);
+				newDate=LocalDateTime.parse(data[0],formatter);
 				name = data[1];
 				currentState=data[2];
 				newState = data[4];
@@ -53,16 +56,18 @@ public static void main(String[] args) {
 					int ind;
 					ind = d1.indexOf(num);
 					//Compare The LocalDateTime And update The State
-					if (d1.get(ind).getDate().isBefore(date))
+					if (d1.get(ind).getNewDate().isBefore(newDate))
 					{
 						d1.get(ind).setNewState(newState);
-					}else if (d1.get(ind).getDate().isAfter(date))
+						d1.get(ind).setNewDate(newDate);
+					}else if (d1.get(ind).getOldDate().isAfter(oldDate))
 					{
 						d1.get(ind).setCurrentState(currentState);
+						d1.get(ind).setOldDate(oldDate);
 					}
 				}else
 				{
-					DSN d= new DSN(date,name,currentState,newState);
+					DSN d= new DSN(oldDate,newDate,name,currentState,newState);
 					d1.add(d);
 				}
 				line = reader.readLine();
@@ -85,7 +90,7 @@ public static void main(String[] args) {
 			System.out.println("White List "+ d1.get(i).getName());
 			w.add(d1.get(i).getName());
 		}
-		//System.out.println(d1.get(i));
+	//	System.out.println(d1.get(i));
 	}
 	
 // Creating Output File and Insert Data formated as requested
@@ -114,46 +119,76 @@ public static void main(String[] args) {
 }
 //DSN class
 class DSN{
-	private LocalDateTime date;
+	private LocalDateTime oldDate;
+	private LocalDateTime newDate;
 	private String name;
 	private String currentState;
 	private String newState;
-	public DSN( LocalDateTime date,String name, String currentState, String newState) {
+	
+	
+	public DSN(LocalDateTime oldDate, LocalDateTime newDate, String name, String currentState, String newState) {
 		super();
-
-		this.date = date;
+		this.oldDate = oldDate;
+		this.newDate = newDate;
 		this.name = name;
 		this.currentState = currentState;
 		this.newState = newState;
 	}
+
+
 	@Override
 	public String toString() {
-		return "DSN [name=" + name + ", date=" + date + ", currentState=" + currentState + ", newState=" + newState
-				+ "]";
+		return "DSN [oldDate=" + oldDate + ", newDate=" + newDate + ", name=" + name + ", currentState=" + currentState
+				+ ", newState=" + newState + "]";
 	}
-	public LocalDateTime getDate() {
-		return date;
+
+
+	public LocalDateTime getOldDate() {
+		return oldDate;
 	}
-	public void setDate(LocalDateTime date) {
-		this.date = date;
+
+
+	public void setOldDate(LocalDateTime oldDate) {
+		this.oldDate = oldDate;
 	}
+
+
+	public LocalDateTime getNewDate() {
+		return newDate;
+	}
+
+
+	public void setNewDate(LocalDateTime newDate) {
+		this.newDate = newDate;
+	}
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 	public String getCurrentState() {
 		return currentState;
 	}
+
+
 	public void setCurrentState(String currentState) {
 		this.currentState = currentState;
 	}
+
+
 	public String getNewState() {
 		return newState;
 	}
+
+
 	public void setNewState(String newState) {
 		this.newState = newState;
 	}
-
 }
