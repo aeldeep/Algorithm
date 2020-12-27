@@ -92,7 +92,7 @@ public static void main(String[] args) {
 		}
 	//	System.out.println(d1.get(i));
 	}
-	
+
 // Creating Output File and Insert Data formated as requested
     try {
         FileWriter myWriter = new FileWriter("E://Output File.txt");
@@ -114,7 +114,7 @@ public static void main(String[] args) {
         System.out.println("An error occurred.");
         e.printStackTrace();
       }
-	
+  
 }
 }
 //DSN class
